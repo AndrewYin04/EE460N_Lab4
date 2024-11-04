@@ -141,7 +141,6 @@ int MEMORY[WORDS_IN_MEM][2];
 
 int RUN_BIT;	/* run bit */
 int BUS;	/* value of the bus */
-int INTERRUPT = 0; /* Interrupt Signal */ // todo here
 
 typedef struct System_Latches_Struct{
 
@@ -170,6 +169,8 @@ int EXCV; /* Exception vector register */
 int SSP; /* Initial value of system stack pointer */
 /* MODIFY: You may add system latches that are required by your implementation */
 int Privilege; /* PSR[15]; 0 means supervisor mode; 1 means user mode */ // todo here
+int INTERRUPT; /* Interrupt Signal */ // todo here
+int MV; /* Memory Violation Signal; A combination of either or both Protection and Unaligned Access Exceptions */ // todo here
 
 } System_Latches;
 
@@ -207,8 +208,9 @@ void help() {
 /*                                                             */
 /***************************************************************/
 void cycle() {
-    if (CYCLE_COUNT == 300) {
-        INTERRUPT = 1;
+    if (CYCLE_COUNT == 300) { // timer interrupt
+        CURRENT_LATCHES.INTERRUPT = 1;
+        CURRENT_LATCHES.INTV = 0x01;
     }
     eval_micro_sequencer();
     cycle_memory();
@@ -529,6 +531,8 @@ void initialize(char *argv[], int num_prog_files) {
     memcpy(CURRENT_LATCHES.MICROINSTRUCTION, CONTROL_STORE[INITIAL_STATE_NUMBER], sizeof(int)*CONTROL_STORE_BITS);
     CURRENT_LATCHES.SSP = 0x3000; /* Initial value of system stack pointer */
     CURRENT_LATCHES.Privilege = 0b01;
+    CURRENT_LATCHES.INTERRUPT = 0;
+    CURRENT_LATCHES.MV = 0;
 
     NEXT_LATCHES = CURRENT_LATCHES;
 
