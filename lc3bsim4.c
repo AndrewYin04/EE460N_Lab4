@@ -141,7 +141,7 @@ int MEMORY[WORDS_IN_MEM][2];
 
 int RUN_BIT;	/* run bit */
 int BUS;	/* value of the bus */
-int INTERRUPT; /* Interrupt Signal */ // todo here
+int INTERRUPT = 0; /* Interrupt Signal */ // todo here
 
 typedef struct System_Latches_Struct{
 
