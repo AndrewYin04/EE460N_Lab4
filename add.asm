@@ -1,13 +1,11 @@
         .ORIG x3000
 
-        ; Step 1: Initialize x4000 to 1
         LEA   R0, INITADDR       ; Load address of x4000 into R0
         LDW   R0, R0, #0
         AND R1, R1, #0
         ADD   R1, R1, #1          ; Set R1 to 1
         STW   R1, R0, #0          ; Store 1 at x4000
 
-        ; Step 2: Calculate the sum of the first 20 signed bytes starting from xC000
         LEA   R2, DATASTART      ; Load base address xC000 into R2
         LDW R2, R2, #0
         AND   R3, R3, #0          ; Clear R3 to hold the sum
@@ -21,7 +19,6 @@ SUMLOOP
         ADD   R4, R4, #-1         ; Decrement the count
         BRP   SUMLOOP            ; Repeat until all 20 bytes are processed
 
-        ; Step 3: Store the sum at xC014
         LEA   R1, SUMADDR        ; Load address xC014 into R1
         LDW R1, R1, #0
         STW   R3, R1, #0          ; Store the sum at xC014
