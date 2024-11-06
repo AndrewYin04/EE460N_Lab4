@@ -1,14 +1,14 @@
         .ORIG x1200            ; Start of interrupt service routine
 
         ; Save R0 and R1 to the stack to preserve them
-        STW R0, R6, #-2        ; Push R0 onto the stack
-        ADD R6, R6, #-2
-        STW R1, R6, #-2        ; Push R1 onto the stack
-        ADD R6, R6, #-2
+        STW R0, R6, #-2        ; Push R0 onto the stack ; x1200
+        ADD R6, R6, #-2         ; x1202
+        STW R1, R6, #-2        ; Push R1 onto the stack ; x1204
+        ADD R6, R6, #-2         ; x1206
 
         ; Load the address x4000 into R0
-        LEA R0, TIMERADDRESS   ; Load address of x4000 into R0
-        LDW R0, R0, #0
+        LEA R0, TIMERADDRESS   ; Load address of x4000 into R0 ; x1208
+        LDW R0, R0, #0                  ;x120a
 
         ; Load the value at memory location x4000 into R1
         LDW R1, R0, #0         ; Load the current value at x4000 into R1

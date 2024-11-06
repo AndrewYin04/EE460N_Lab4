@@ -243,7 +243,7 @@ void help() {
 /*                                                             */
 /***************************************************************/
 void cycle() {
-    if (CYCLE_COUNT == 10) { // timer interrupt
+    if (CYCLE_COUNT == 300) { // timer interrupt
         CURRENT_LATCHES.INTERRUPT = 1;
         NEXT_LATCHES.INTERRUPT = 1;
         NEXT_LATCHES.INTV = 0x01;
