@@ -1,9 +1,9 @@
         .ORIG x1200            ; Start of interrupt service routine
 
         ; Save R0 and R1 to the stack to preserve them
-        STW R0, R6, #-2        ; Push R0 onto the stack ; x1200
+        STW R0, R6, #-1        ; Push R0 onto the stack ; x1200
         ADD R6, R6, #-2         ; x1202
-        STW R1, R6, #-2        ; Push R1 onto the stack ; x1204
+        STW R1, R6, #-1        ; Push R1 onto the stack ; x1204
         ADD R6, R6, #-2         ; x1206
 
         ; Load the address x4000 into R0
