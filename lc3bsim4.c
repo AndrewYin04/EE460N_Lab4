@@ -675,6 +675,7 @@ void eval_micro_sequencer() {
             NEXT_LATCHES.STATE_NUMBER = j | (PSR15 << 3);
         } else if ((cond == 5) && INT) {
             NEXT_LATCHES.STATE_NUMBER = j | (INT << 4);
+            NEXT_LATCHES.INTERRUPT = 0;
         } else {
             NEXT_LATCHES.STATE_NUMBER = j;
         }
