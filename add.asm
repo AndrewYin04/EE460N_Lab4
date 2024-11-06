@@ -14,11 +14,11 @@
 
 SUMLOOP LDB   R5, R2, #0          ; Load the byte from xC000 + offset into R5 ; x3014
         ADD   R3, R3, R5          ; Add byte value to the sum in R3            ; x3016
-        ADD   R2, R2, #1          ; Move to the next byte
-        ADD   R4, R4, #-1         ; Decrement the count
-        BRP   SUMLOOP            ; Repeat until all 20 bytes are processed
+        ADD   R2, R2, #1          ; Move to the next byte ; x3018
+        ADD   R4, R4, #-1         ; Decrement the count ; x301a
+        BRP   SUMLOOP            ; Repeat until all 20 bytes are processed ; x301c
 
-        LEA   R1, SUMADDR        ; Load address xC014 into R1
+        LEA   R1, SUMADDR        ; Load address xC014 into R1 ; x301e
         LDW R1, R1, #0
         STW   R3, R1, #0          ; Store the sum at xC014
 

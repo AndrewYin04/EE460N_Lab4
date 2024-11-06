@@ -992,7 +992,7 @@ void latch_datapath_values() {
     }
 
     if (LD_MV) {
-        NEXT_LATCHES.MV = (((CURRENT_LATCHES.Privilege == 1) && (BUS < 0x03000)) || (((CURRENT_LATCHES.MAR & 0b01) == 1) &&
+        NEXT_LATCHES.MV = (((CURRENT_LATCHES.Privilege == 1) && (BUS < 0x03000)) || (((BUS & 0b01) == 1) &&
                 (GetDATA_SIZE(CURRENT_LATCHES.MICROINSTRUCTION) == 1)));
     }
 
