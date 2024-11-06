@@ -567,6 +567,7 @@ void initialize(char *argv[], int num_prog_files) {
     CURRENT_LATCHES.STATE_NUMBER = INITIAL_STATE_NUMBER;
     memcpy(CURRENT_LATCHES.MICROINSTRUCTION, CONTROL_STORE[INITIAL_STATE_NUMBER], sizeof(int)*CONTROL_STORE_BITS);
     CURRENT_LATCHES.SSP = 0x3000; /* Initial value of system stack pointer */
+    CURRENT_LATCHES.Saved_SSP = 0x3000; /* Initial value of system stack pointer */
     CURRENT_LATCHES.Privilege = 0b01;
     CURRENT_LATCHES.INTERRUPT = 0;
     CURRENT_LATCHES.MV = 0;
