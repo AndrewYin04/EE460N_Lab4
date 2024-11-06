@@ -1,3 +1,3 @@
-.0RIG x1600
+.ORIG x1600
 HALT
 .END
