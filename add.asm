@@ -19,22 +19,22 @@ SUMLOOP LDB   R5, R2, #0          ; Load the byte from xC000 + offset into R5 ; 
         BRP   SUMLOOP            ; Repeat until all 20 bytes are processed ; x301c
 
         LEA   R1, SUMADDR        ; Load address xC014 into R1 ; x301e
-        LDW R1, R1, #0
-        STW   R3, R1, #0          ; Store the sum at xC014
+        LDW R1, R1, #0              ; x3020
+        STW   R3, R1, #0          ; Store the sum at xC014 ; x3022
 
         ; Step 4: Cause desired exceptions
 
         ; Uncomment one of the following lines based on the exception you want to test:
 
         ; Protection Exception (Store sum at x0000)
-        LEA   R1, PROTEXCEPTADDR
-        LDW R1, R1, #0
-        STW   R3, R1, #0
+        ; LEA   R1, PROTEXCEPTADDR ; x3024
+        ; LDW R1, R1, #0          ; x3026
+        ; STW   R3, R1, #0        ; x3028
 
         ; Unaligned Access Exception (Store sum at xC017)
-        ; LEA   R1, UNALIGNEDADDR
-        ; LDW R1, R1, #0
-        ; STW   R3, R1, #0
+        LEA   R1, UNALIGNEDADDR
+        LDW R1, R1, #0
+        STW   R3, R1, #0
 
         ; Unknown Opcode Exception (Invalid opcode)
         ; .FILL xA000             ; An invalid opcode (1010)
