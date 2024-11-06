@@ -7,7 +7,7 @@
         ADD R6, R6, #-2
 
         ; Load the address x4000 into R0
-        LEA R0, TIMER_ADDRESS   ; Load address of x4000 into R0
+        LEA R0, TIMERADDRESS   ; Load address of x4000 into R0
         LDW R0, R0, #0
 
         ; Load the value at memory location x4000 into R1
@@ -28,5 +28,5 @@
         ; Return from interrupt
         RTI                    ; Return from interrupt
 
-TIMER_ADDRESS .FILL x4000       ; Memory location holding address x4000
+TIMERADDRESS .FILL x4000       ; Memory location holding address x4000
         .END
