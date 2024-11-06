@@ -1,0 +1,8 @@
+.ORIG x3000
+LEA R0, NUM
+LDW R0, R0, #0
+RSHFA R1, R0, #3
+HALT
+NUM .fill x8002
+.END
+
