@@ -50,7 +50,7 @@ void latch_datapath_values();
 /***************************************************************/
 enum CS_BITS {
     IRD,
-    COND1, COND0,
+    COND2, COND1, COND0,
     J5, J4, J3, J2, J1, J0,
     LD_MAR,
     LD_MDR,
@@ -76,6 +76,22 @@ enum CS_BITS {
     DATA_SIZE,
     LSHF1,
 /* MODIFY: you have to add all your new control signals */
+    GatePC_1,
+    LD_SavedSSP,
+    LD_SavedUSP,
+    SPMUX1, SPMUX0,
+    GateSP,
+    GatePSR,
+    PSRMUX,
+    LD_MV,
+    LD_Priv,
+    DR_SPMUX,
+    SR1_SPMUX,
+    CHK_MV,
+    CHK_IOP,
+    GateVector,
+    LD_Vector,
+    VectorMUX1, VectorMUX0,
     CONTROL_STORE_BITS
 } CS_BITS;
 
@@ -83,7 +99,7 @@ enum CS_BITS {
 /* Functions to get at the control bits.                       */
 /***************************************************************/
 int GetIRD(int *x)           { return(x[IRD]); }
-int GetCOND(int *x)          { return((x[COND1] << 1) + x[COND0]); }
+int GetCOND(int *x)          { return((x[COND2] << 2) + (x[COND1] << 1) + x[COND0]); }
 int GetJ(int *x)             { return((x[J5] << 5) + (x[J4] << 4) +
 				      (x[J3] << 3) + (x[J2] << 2) +
 				      (x[J1] << 1) + x[J0]); }
@@ -111,6 +127,22 @@ int GetR_W(int *x)           { return(x[R_W]); }
 int GetDATA_SIZE(int *x)     { return(x[DATA_SIZE]); }
 int GetLSHF1(int *x)         { return(x[LSHF1]); }
 /* MODIFY: you can add more Get functions for your new control signals */
+int GetGatePC_1(int *x)     { return (x[GatePC_1]); }
+int GetLDSavedSSP(int *x)   { return (x[LD_SavedSSP]); }
+int GetLDSavedUSP(int *x)   { return (x[LD_SavedUSP]); }
+int GetSPMUX(int *x)        { return (x[SPMUX1] << 1) + (x[SPMUX0]); }
+int GetGateSP(int *x)       { return (x[GateSP]); }
+int GetGatePSR(int *x)      { return (x[GatePSR]); }
+int GetPSRMUX(int *x)       { return (x[PSRMUX]); }
+int GetLD_MV(int *x)        { return (x[LD_MV]); }
+int GetLD_Priv(int *x)      { return (x[LD_Priv]); }
+int GetDR_SPMUX(int *x)     { return (x[DR_SPMUX]); }
+int GetSR1_SPMUX(int *x)    { return (x[SR1_SPMUX]); }
+int GetCHK_MV(int *x)       { return (x[CHK_MV]); }
+int GetCHK_IOP(int *x)      { return (x[CHK_IOP]); }
+int GetGateVector(int *x)   { return (x[GateVector]); }
+int GetLD_Vector(int *x)    { return (x[LD_Vector]); }
+int GetVectorMUX(int *x)    { return ((x[VectorMUX1] << 1) + x[VectorMUX0]); }
 
 /***************************************************************/
 /* The control store rom.                                      */
