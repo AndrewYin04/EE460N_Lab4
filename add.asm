@@ -27,9 +27,9 @@ SUMLOOP LDB   R5, R2, #0          ; Load the byte from xC000 + offset into R5 ; 
         ; Uncomment one of the following lines based on the exception you want to test:
 
         ; Protection Exception (Store sum at x0000)
-        ; LEA   R1, PROTEXCEPTADDR
-        ; LDW R1, R1, #0
-        ; STW   R3, R1, #0
+        LEA   R1, PROTEXCEPTADDR
+        LDW R1, R1, #0
+        STW   R3, R1, #0
 
         ; Unaligned Access Exception (Store sum at xC017)
         ; LEA   R1, UNALIGNEDADDR
