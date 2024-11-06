@@ -19,7 +19,7 @@ SUMLOOP
         ADD   R3, R3, R5          ; Add byte value to the sum in R3
         ADD   R2, R2, #1          ; Move to the next byte
         ADD   R4, R4, #-1         ; Decrement the count
-        BRp   SUMLOOP            ; Repeat until all 20 bytes are processed
+        BRP   SUMLOOP            ; Repeat until all 20 bytes are processed
 
         ; Step 3: Store the sum at xC014
         LEA   R1, SUMADDR        ; Load address xC014 into R1
