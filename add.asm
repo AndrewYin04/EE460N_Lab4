@@ -12,8 +12,7 @@
         LEA    R4, COUNT           ; Load count (20) into R4
         LDB R4, R4, #0
 
-SUMLOOP
-        LDB   R5, R2, #0          ; Load the byte from xC000 + offset into R5
+SUMLOOP LDB   R5, R2, #0          ; Load the byte from xC000 + offset into R5
         ADD   R3, R3, R5          ; Add byte value to the sum in R3
         ADD   R2, R2, #1          ; Move to the next byte
         ADD   R4, R4, #-1         ; Decrement the count
