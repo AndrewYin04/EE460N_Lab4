@@ -1,0 +1,3 @@
+.0RIG x1600
+HALT
+.END
